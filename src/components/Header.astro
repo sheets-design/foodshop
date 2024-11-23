@@ -1,0 +1,202 @@
+---
+import { Image } from "astro:assets";
+import logo from "@images/common/logo_black.svg";
+import telBlack from "@images/common/tel_black.svg";
+import navHome from "@images/common/nav_home.svg";
+import navMessage from "@images/common/nav_message.svg";
+import navFeature from "@images/common/nav_feature.svg";
+import navMenu from "@images/common/nav_menu.svg";
+import navShopInfo from "@images/common/nav_shop-info.svg";
+import navContact from "@images/common/nav_contact.svg";
+---
+
+<header class="header">
+    <div class="header-container">
+        <div class="logo"><Image src={logo} alt="うめ屋" /></div>
+        <div class="header-nav">
+            <div class="phone"><Image src={telBlack} alt="" /></div>
+            <button class="btn-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li>
+                        <a class="js-list-off" href="/">
+                            <Image src={navHome} alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="js-list-off" href="/#message">
+                            <Image src={navMessage} alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="js-list-off" href="/#feature">
+                            <Image src={navFeature} alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="js-list-off" href="/menu">
+                            <Image src={navMenu} alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="js-list-off" href="/#shop-info">
+                            <Image src={navShopInfo} alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="js-list-off" href="/contact">
+                            <Image src={navContact} alt="" />
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<style>
+    .header {
+        width: 100%;
+        position: relative;
+    }
+    .header-container {
+        margin: 0 auto;
+        width: 87%;
+        height: 100px;
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        width: clamp(5.375rem, 4.753rem + 2.65vw, 6.875rem); /*86-110 */
+    }
+    .header-nav {
+        display: grid;
+        justify-items: end;
+    }
+
+    .phone {
+        width: clamp(11rem, 9.757rem + 5.3vw, 14rem); /*176-224 */
+        margin-bottom: 16px;
+    }
+
+    /*---------------ハンバーガーボタンの作成-----------*/
+    .btn-burger {
+        width: 30px;
+        height: 30px;
+
+        position: relative;
+        z-index: 10;
+    }
+    .btn-burger span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        position: absolute;
+        background-color: var(--brawn);
+        transition: 0.3s;
+    }
+    .btn-burger span:nth-child(1) {
+        top: 4px;
+    }
+    .btn-burger span:nth-child(2) {
+        top: 13px;
+    }
+    .btn-burger span:nth-child(3) {
+        top: 22px;
+    }
+
+    .btn-burger.open span:nth-child(1) {
+        top: 13px;
+        rotate: 45deg;
+    }
+    .btn-burger.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .btn-burger.open span:nth-child(3) {
+        top: 13px;
+        rotate: -45deg;
+    }
+    /*---------------ナビゲーションの作成-----------*/
+    .nav-menu {
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+        display: grid;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -10;
+        place-items: center;
+        transition: all 0.3s;
+        opacity: 0;
+    }
+
+    .nav-menu.open {
+        opacity: 0.9;
+        z-index: 1;
+    }
+
+    .nav-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+    .nav-menu li a {
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        filter: brightness(100%);
+    }
+    .nav-menu li a:hover {
+        opacity: 0.5;
+    }
+
+    @media (min-width: 768px) {
+        .btn-burger {
+            display: none;
+        }
+        .nav-menu {
+            opacity: 1;
+            height: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .nav-menu ul {
+            flex-direction: row;
+        }
+        .phone {
+            margin-bottom: 8px;
+        }
+    }
+</style>
+
+<script>
+    /*---------------ハンバーガーメニューの開閉-----------*/
+    document.addEventListener("astro:page-load", () => {
+        const btn = document.querySelector(".btn-burger");
+        const nav = document.querySelector(".nav-menu");
+
+        btn.addEventListener("click", () => {
+            nav.classList.toggle("open");
+            btn.classList.toggle("open");
+        });
+
+        const listOffs = document.querySelectorAll(".js-list-off");
+
+        listOffs.forEach((listoff) => {
+            listoff.addEventListener("click", () => {
+                nav.classList.remove("open");
+                btn.classList.toggle("open");
+            });
+        });
+    });
+</script>

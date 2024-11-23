@@ -1,0 +1,25 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class="wrap">
+    <p class={className} {...rest}><slot /></p>
+</div>
+
+<style>
+    .wrap {
+        text-align: center;
+    }
+    p {
+        display: inline-block;
+        font-family: sans-serif;
+        padding: 0.5em 1em;
+        background-color: var(--brawn);
+        color: white;
+    }
+
+    p::after {
+        content: "→";
+        margin-left: 1em;
+    }
+</style>

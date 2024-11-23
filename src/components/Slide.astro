@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import slide1 from "@images/slide/slide_img_1.jpg";
+import slide2 from "@images/slide/slide_img_2.jpg";
+import slide3 from "@images/slide/slide_img_3.jpg";
+import slide4 from "@images/slide/slide_img_4.jpg";
+import slide5 from "@images/slide/slide_img_5.jpg";
+import slide6 from "@images/slide/slide_img_6.jpg";
+import slide7 from "@images/slide/slide_img_7.jpg";
+import slide8 from "@images/slide/slide_img_8.jpg";
+---
+
+<div class="slide">
+    <div class="slide-container">
+        <ul class="slide-list">
+            <li class="slide-item"><Image src={slide1} alt="" /></li>
+            <li class="slide-item"><Image src={slide2} alt="" /></li>
+            <li class="slide-item"><Image src={slide3} alt="" /></li>
+            <li class="slide-item"><Image src={slide4} alt="" /></li>
+            <li class="slide-item"><Image src={slide5} alt="" /></li>
+            <li class="slide-item"><Image src={slide6} alt="" /></li>
+            <li class="slide-item"><Image src={slide7} alt="" /></li>
+            <li class="slide-item"><Image src={slide8} alt="" /></li>
+        </ul>
+        <ul class="slide-list">
+            <li class="slide-item"><Image src={slide1} alt="" /></li>
+            <li class="slide-item"><Image src={slide2} alt="" /></li>
+            <li class="slide-item"><Image src={slide3} alt="" /></li>
+            <li class="slide-item"><Image src={slide4} alt="" /></li>
+            <li class="slide-item"><Image src={slide5} alt="" /></li>
+            <li class="slide-item"><Image src={slide6} alt="" /></li>
+            <li class="slide-item"><Image src={slide7} alt="" /></li>
+            <li class="slide-item"><Image src={slide8} alt="" /></li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    .slide {
+        margin-block: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
+        overflow: hidden;
+    }
+    .slide-container {
+        display: flex;
+    }
+
+    .slide-list {
+        display: flex;
+        height: 200px;
+        animation: scroll 60s linear forwards infinite;
+    }
+
+    .slide-item {
+        width: calc(100vw / 2);
+    }
+    .slide-item img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @media (min-width: 768px) {
+        .slide-item {
+            width: calc(100vw / 5);
+        }
+        .slide-list {
+            height: 240px;
+        }
+    }
+</style>

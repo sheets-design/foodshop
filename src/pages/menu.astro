@@ -1,0 +1,155 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+import { Image } from "astro:assets";
+
+import headingAllmenu from "@images/heading/heading_allmenu.svg";
+import headingWagashi from "@images/heading/menu_wagashi.svg";
+import headingDrink from "@images/heading/menu_drink.svg";
+import photoWagashi from "@images/hero/hero_img_2.jpg";
+import photoDrink from "@images/slide/slide_img_1.jpg";
+---
+
+<Layout
+    title="メニュー一覧 | 架空の和菓子屋「うめ屋」"
+    description="Webサイト制作のサンプルで作成した、架空の和菓子屋「うめ屋」のメニュー一覧です"
+>
+    <main>
+        <div class="all-menu">
+            <div class="top">
+                <h1 class="heading">
+                    <Image src={headingAllmenu} alt="" />
+                </h1>
+            </div>
+            <div class="base-container">
+                <div class="menu-container">
+                    <div class="thumb">
+                        <h2 class="title">
+                            <Image src={headingWagashi} alt="" />
+                        </h2>
+                        <figure class="photo">
+                            <Image src={photoWagashi} alt="" />
+                        </figure>
+                    </div>
+                    <ul class="price_list">
+                        <li><strong>あんみつ</strong>800円</li>
+                        <li><strong>3色だんご</strong>500円</li>
+                        <li><strong>たい焼き</strong>400円</li>
+                        <li><strong>どら焼き</strong>400円</li>
+                        <li><strong>おしるこ</strong>600円</li>
+                        <li><strong>栗羊かん</strong>400円</li>
+                        <li><strong>かき氷</strong>800円</li>
+                        <li><strong>豆大福</strong>400円</li>
+                        <li><strong>だんご</strong>400円</li>
+                        <li><strong>抹茶ロール</strong>600円</li>
+                        <li><strong>わらびもち</strong>400円</li>
+                        <li><strong>大学いも</strong>400円</li>
+                    </ul>
+                </div>
+                <div class="menu-container">
+                    <div class="thumb">
+                        <h2 class="title">
+                            <Image src={headingDrink} alt="" />
+                        </h2>
+                        <figure class="photo">
+                            <Image src={photoDrink} alt="" />
+                        </figure>
+                    </div>
+                    <ul class="price_list">
+                        <li><strong>煎茶 (Hot/Cold)</strong>400円</li>
+                        <li><strong>抹茶ラテ</strong>600円</li>
+                        <li><strong>玉露 (Hot/Cold)</strong>450円</li>
+                        <li><strong>抹茶ショコララテ</strong>650円</li>
+                        <li><strong>ほうじ茶 (Hot/Cold)</strong>400円</li>
+                        <li><strong>抹茶フロート</strong>650円</li>
+                        <li><strong>珈琲 (Hot/Cold)</strong>500円</li>
+                        <li><strong>ほうじ茶ラテ</strong>600円</li>
+                        <li><strong>紅茶 (Hot/Cold)</strong>400円</li>
+                        <li><strong>カフェラテ</strong>600円</li>
+                        <li><strong>抹茶</strong>500円</li>
+                        <li><strong>ハーブティー</strong>400円</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <style>
+            .top {
+                width: 100%;
+                height: 40vh;
+                display: grid;
+                place-items: center;
+                background-image: url(../images/slide/slide_img_5.jpg);
+                background-size: cover;
+                background-position: center;
+                margin-bottom: 40px;
+            }
+            .heading {
+                background-color: white;
+                padding: 10px;
+            }
+            .menu-container {
+                text-align: center;
+                display: grid;
+                gap: 20px;
+                margin-bottom: 60px;
+            }
+
+            .title {
+                margin-bottom: 20px;
+            }
+            .photo {
+                margin: auto;
+                width: min(100%, 500px);
+                aspect-ratio: 3/2;
+            }
+            .photo img {
+                height: 100%;
+                object-fit: cover;
+            }
+            .price-list {
+                column-count: 2;
+                column-gap: 40px;
+            }
+
+            ul.price_list {
+                column-count: 1;
+                column-gap: 30px;
+            }
+            ul.price_list li {
+                font-family: sans-serif;
+                display: inline-flex;
+                padding-bottom: 8px;
+                border-bottom: var(--brawn) 1px solid;
+                margin-bottom: 8px;
+                width: 100%;
+                text-align: left;
+            }
+            ul.price_list li strong {
+                margin-right: auto;
+                font-family: "Zen Old Mincho", serif;
+            }
+
+            @media (min-width: 540px) {
+                ul.price_list {
+                    column-count: 2;
+                }
+
+                ul.price_list li {
+                    padding-bottom: 12px;
+                    margin-bottom: 12px;
+                }
+            }
+
+            @media (min-width: 768px) {
+                .top {
+                    margin-bottom: 80px;
+                }
+                .menu-container {
+                    grid-template-columns: 35% 1fr;
+                    column-gap: 40px;
+                    margin-bottom: 100px;
+                }
+            }
+        </style>
+    </main>
+</Layout>

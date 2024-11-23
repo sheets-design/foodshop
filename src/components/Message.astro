@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import headingMessage from "@images/heading/heading_message.svg";
+import deco1 from "@images/deco/deco_1.png";
+import deco2 from "@images/deco/deco_2.png";
+---
+
+<section class="message" id="message">
+    <div class="base-container">
+        <div class="decoration1"><Image src={deco1} alt="" /></div>
+        <div class="decoration2"><Image src={deco2} alt="" /></div>
+        <div class="message-container">
+            <h2 class="sec-heading"><Image src={headingMessage} alt="" /></h2>
+            <p class="text">
+                うめ屋は、江戸時代から続く<br class="br-pc" />
+                老舗の和菓子店「うめ八」が、<br />
+                もっと多くの人に、気軽に<br class="br-pc" />
+                和菓子を楽しんでもらいたい、<br />
+                という思いから始めた甘味処です。<br />
+                築八十年の古民家を改装した<br class="br-pc" />
+                風情ある雰囲気の中で、<br />
+                二百年続く伝統的な和菓子を、<br class="br-pc" />
+                心ゆくまでご堪能ください。
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .message {
+        content: "";
+        background-image: url(../images/deco/paper_002.jpg);
+        padding-top: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
+        padding-bottom: 160px;
+        position: relative;
+        overflow: hidden;
+    }
+    .message-container {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+    }
+
+    .sec-heading {
+        width: clamp(3.5rem, 2.93rem + 2.43vw, 4.875rem); /*56-77*/
+        margin-top: -2rem;
+        margin-left: clamp(1.25rem, -0.822rem + 8.84vw, 6.25rem);
+        z-index: 10;
+    }
+    .text {
+        writing-mode: vertical-rl;
+        font-size: clamp(1.125rem, 0.97rem + 0.66vw, 1.5rem); /*18-24*/
+        line-height: 2;
+        letter-spacing: 0.1em;
+    }
+
+    @keyframes floating {
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(10px);
+        }
+    }
+    .decoration1 {
+        position: absolute;
+        display: none;
+
+        animation: floating 4s ease-in-out infinite;
+        opacity: 0.7;
+    }
+    .decoration2 {
+        width: 523px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        animation: floating 4s ease 2s infinite;
+        opacity: 0.7;
+    }
+
+    @media (min-width: 768px) {
+        .message {
+            padding-bottom: 100px;
+        }
+
+        .text {
+            line-height: 2.5;
+        }
+        .decoration1 {
+            display: block;
+            width: 454px;
+            top: 5%;
+            right: 0;
+        }
+    }
+</style>

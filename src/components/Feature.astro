@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import headingFeature from "@images/heading/heading_feature.svg";
+import feature1 from "@images/feature/feature_img_1.jpg";
+import feature2 from "@images/feature/feature_img_2.jpg";
+---
+
+<section class="feature" id="feature">
+    <div class="base-container">
+        <div class="feature-container">
+            <div class="text-area">
+                <h2 class="sec-heading">
+                    <Image src={headingFeature} alt="" />
+                </h2>
+                <p class="text">
+                    和菓子の味を決めるのは餡です。その餡の甘みや旨みは、小豆本来の本来の味を最大限に引き出すことで生まれます。うめ屋では、安心安全な国産小豆の中から厳選した「大山小豆」を使用しています。<br
+                    />
+                    また和菓子は気温や湿度などの環境に左右されやすく、味や食感、風味が微妙に変化します。うめ屋では、熟練の職人が一つ一つ丁寧に手作業でつくることで、常に変わらぬ味を守りつづけています。
+                </p>
+            </div>
+            <figure class="photo-area">
+                <Image src={feature1} alt="" />
+                <Image src={feature2} alt="" />
+            </figure>
+        </div>
+    </div>
+</section>
+
+<style>
+    .feature {
+        background-size: 50px 50px;
+        background-repeat: repeat;
+        background-image: repeating-conic-gradient(
+            from 0deg,
+            #4e4143 0deg 90deg,
+            #57484c 90deg 180deg
+        );
+        padding-top: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
+        padding-bottom: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
+    }
+    .sec-heading {
+        width: clamp(14rem, 11.514rem + 10.61vw, 20rem);
+    }
+    .text {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        color: white;
+        font-size: clamp(1rem, 0.948rem + 0.22vw, 1.125rem); /*16-18 */
+        font-family: sans-serif;
+        font-weight: 300;
+        line-height: 2;
+    }
+    .photo-area {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .photo-area img {
+        width: min(80%, 344px);
+    }
+    .photo-area img:nth-child(1) {
+    }
+    .photo-area img:nth-child(2) {
+        margin-left: auto;
+        margin-top: -40px;
+    }
+    @media (min-width: 768px) {
+        .feature-container {
+            display: grid;
+            grid-template-columns: max(40%, 346px) 1fr;
+            gap: 60px;
+        }
+        .text-area {
+            width: 100%;
+        }
+
+        .photo-area {
+        }
+        .text {
+            margin-bottom: 0;
+        }
+
+        .photo-area img {
+            width: max(58%, 320px);
+        }
+        .photo-area img:nth-child(2) {
+            margin-left: auto;
+            margin-top: -160px;
+        }
+    }
+</style>

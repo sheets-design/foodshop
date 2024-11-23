@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+
+import headingInfo from "@images/heading/heading_shop-info.svg";
+---
+
+<section class="shop-info" id="shop-info">
+    <div class="base-container">
+        <div class="shop-info-container">
+            <div class="text-area">
+                <h2 class="sec-heading">
+                    <Image src={headingInfo} alt="" />
+                </h2><div class="info-container">
+                    <dl class="info-list">
+                        <dt>TEL</dt>
+                        <dd>03-1234-5678</dd>
+                    </dl>
+                    <dl class="info-list">
+                        <dt>営業時間</dt>
+                        <dd>11:00～18:30（L.O.18:00）</dd>
+                    </dl>
+                    <dl class="info-list">
+                        <dt>定休日</dt>
+                        <dd>水曜日</dd>
+                    </dl>
+                    <dl class="info-list">
+                        <dt>席数</dt>
+                        <dd>280席</dd>
+                    </dl>
+                    <dl class="info-list">
+                        <dt>駐車場</dt>
+                        <dd>80台</dd>
+                    </dl>
+                    <dl class="info-list">
+                        <dt>住所</dt>
+                        <dd>〒198-0036　東京都青梅市河辺町3－1078</dd>
+                    </dl>
+                    <dl class="info-list">
+                        <dt>アクセス</dt>
+                        <dd>JR青梅線河辺駅南口から徒歩20分</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="map-area">
+                <iframe
+                    class="gg-map"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6473.646895432435!2d139.2802304!3d35.779713!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601923feff4c4081%3A0xf26c88449862a961!2z44CSMTk4LTAwMzYg5p2x5Lqs6YO96Z2S5qKF5biC5rKz6L6655S677yT5LiB55uu77yR77yQ77yX77yY!5e0!3m2!1sja!2sjp!4v1732108960660!5m2!1sja!2sjp"
+                    width="600"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .shop-info {
+        margin-bottom: 100px;
+    }
+
+    .sec-heading {
+        text-align: center;
+    }
+    .info-container {
+        margin-top: 20px;
+    }
+
+    .info-list {
+        font-size: clamp(1rem, 0.948rem + 0.22vw, 1.125rem); /*16-18 */
+        display: flex;
+        padding: 0.7em 0;
+        border-bottom: 1px solid var(--brawn);
+        color: var(--brawn);
+    }
+    dt {
+        width: 5em;
+    }
+    dd {
+        flex: 1;
+    }
+
+    .map-area {
+        margin-top: 20px;
+        width: 100%;
+        height: 300px;
+    }
+    .gg-map {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .sec-heading {
+            text-align: left;
+        }
+        .shop-info-container {
+            display: flex;
+            gap: 40px;
+        }
+        .text-area {
+            width: min(480px, 40%);
+        }
+        .map-area {
+            flex: 1;
+            height: auto;
+        }
+    }
+</style>

@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import headingNews from "@images/heading/heading_news.svg";
+
+import { getBlogs } from "../library/microcms";
+const response = await getBlogs({ fields: ["id", "title", "publishedAt"] });
+---
+
+<section class="news">
+    <div class="base-container">
+        <div class="news-container">
+            <h2 class="sec-heading"><Image src={headingNews} alt="" /></h2>
+            <ul>
+                {
+                    response.contents.map((content: any) => (
+                        <li>
+                            <a href={content.id}>
+                                <div class="date">
+                                    {content.publishedAt.slice(0, 10)}
+                                </div>
+                                <p class="text">{content.title}</p>
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
+</section>
+
+<style>
+    .news {
+        margin-block: clamp(2.5rem, 1.464rem + 4.42vw, 5rem); /* 40px-80px */
+    }
+    .sec-heading {
+        margin-bottom: 20px;
+    }
+    .sec-heading img {
+        width: clamp(8.75rem, 7.533rem + 5.19vw, 11.688rem); /* 140px-187px */
+    }
+    .news li {
+        padding-block: 0.5em;
+        border-bottom: 1px solid var(--brawn);
+    }
+
+    .news li:first-child {
+        padding-top: 0;
+    }
+
+    .date {
+        color: var(--brawn);
+        width: 6em;
+        margin-right: 1em;
+    }
+    .text {
+        flex: 1;
+    }
+    @media (min-width: 768px) {
+        .news-container {
+            display: flex;
+            gap: 32px;
+        }
+        .news ul {
+            flex: 1;
+        }
+
+        .news li a {
+            display: grid;
+            grid-template-columns: auto 1fr;
+        }
+    }
+</style>

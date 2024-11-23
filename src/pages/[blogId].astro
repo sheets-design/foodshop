@@ -1,0 +1,86 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+import { getBlogs, getBlogDetail } from "../library/microcms";
+
+export async function getStaticPaths() {
+    const response = await getBlogs({ fields: ["id"] });
+    return response.contents.map((content: any) => ({
+        params: {
+            blogId: content.id,
+        },
+    }));
+}
+
+const { blogId } = Astro.params;
+const blog = await getBlogDetail(blogId as string);
+
+import { Image } from "astro:assets";
+import headingNews from "@images/heading/heading_news.svg";
+---
+
+<Layout>
+    <section class="news">
+        <div class="news-container">
+            <h2 class="sec-heading"><Image src={headingNews} alt="" /></h2>
+            <div class="post">
+                <div class="date">{blog.publishedAt.slice(0, 10)}</div>
+                <div class="title">{blog.title}</div>
+                <div class="content" set:html={blog.content} />
+                <div class="page-nav"><a href="/">← トップページに戻る</a></div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .news {
+            width: 100%;
+            content: "";
+            background-image: url(../images/deco/paper_002.jpg);
+        }
+        .news-container {
+            width: 87%;
+            max-width: 900px;
+            margin: 0 auto;
+
+            padding-top: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
+            padding-bottom: 40px;
+
+            text-align: center;
+        }
+
+        .post {
+            background-color: white;
+            margin-top: 40px;
+            text-align: left;
+            padding: 20px;
+            box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .date {
+            font-family: sans-serif;
+            font-weight: normal;
+            color: var(--brawn);
+        }
+        .title {
+            font-size: 20px;
+            font-weight: 600;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--brawn);
+            margin-bottom: 1em;
+        }
+        .content {
+            line-height: 2;
+            margin-bottom: 1em;
+            {p{color: red;}}
+        }
+
+        :global(p) {
+            margin-bottom:20px
+        }
+
+        .page-nav {
+            color: var(--brawn);
+            font-family: sans-serif;
+        }
+    </style>
+</Layout>

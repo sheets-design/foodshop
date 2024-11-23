@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+const { title, text, price, image, alt } = Astro.props;
+---
+
+<li class="list-item">
+    <Image src={image} alt={alt} />
+    <div class="title">{title}</div>
+    <p class="text">{text}</p>
+    <div class="price">{price}</div>
+</li>
+
+<style>
+    .title {
+        font-family: sans-serif;
+        font-size: clamp(1.25rem, 1.146rem + 0.44vw, 1.5rem); /*20-24 */
+        font-weight: 700;
+        margin-top: 0.5em;
+    }
+
+    .price {
+        font-family: sans-serif;
+        font-weight: 500;
+        text-align: right;
+        margin-top: 0.5em;
+    }
+</style>

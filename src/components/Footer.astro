@@ -1,0 +1,96 @@
+---
+import Button from "@components/Button.astro";
+
+import { Image } from "astro:assets";
+
+import telWhite from "@images/common/tel_white.svg";
+import logoWhite from "@images/common/logo_white.svg";
+---
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="tel">
+            <p>お電話でのお問い合わせ</p>
+            <Image src={telWhite} alt="" />
+        </div>
+        <div class="logo"><Image src={logoWhite} alt="" /></div>
+        <div class="contact">
+            <p>WEBでのお問い合わせ</p>
+            <a href="/contact">
+                <Button class="btn">お問い合わせフォームへ</Button>
+            </a>
+        </div>
+    </div>
+    <div class="copy">©︎2024 甘味処うめ屋</div>
+</footer>
+
+<style>
+    .footer {
+        background-size: 50px 50px;
+        background-repeat: repeat;
+        background-image: repeating-conic-gradient(
+            from 0deg,
+            #4e4143 0deg 90deg,
+            #57484c 90deg 180deg
+        );
+        padding-top: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
+        padding-bottom: 40px;
+    }
+    .footer-container {
+        display: grid;
+        justify-items: center;
+        color: white;
+        row-gap: 20px;
+        font-family: sans-serif;
+    }
+    .logo {
+        width: clamp(128px, 34vw, 170px);
+        grid-column: 1/1;
+        grid-row: 1/1;
+    }
+
+    .tel {
+        text-align: center;
+        width: min(80%, 285px);
+        margin-bottom: 20px;
+    }
+
+    .contact {
+        text-align: center;
+    }
+    .footer-container p {
+        margin-bottom: 1em;
+    }
+    .btn {
+        background-color: white;
+        color: var(--brawn);
+    }
+    .copy {
+        color: white;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    @media (min-width: 768px) {
+        .footer-container {
+            margin: 0 auto;
+
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            grid-column: 2/3;
+        }
+
+        .tel {
+            justify-self: end;
+        }
+
+        .contact {
+            text-align: center;
+            justify-self: start;
+        }
+    }
+</style>

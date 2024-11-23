@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+
+import animationLogo from "@images/opening-logo.svg";
+---
+
+<div class="loading" transition:persist>
+  <figure class="loading-message" transition:persist>
+    <Image src={animationLogo} alt="" />
+  </figure>
+</div>
+
+<style>
+  .loading {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--brawn);
+    display: grid;
+    place-items: center;
+    transition: all 2s;
+    z-index: 9999;
+    opacity: 1;
+  }
+
+  .loading-message {
+    width: clamp(200px, 50vw, 400px);
+    transition: all 0.3s;
+    opacity: 0;
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const loadingScreen = document.querySelector<HTMLInputElement>(".loading");
+    const loadingMessage =
+      document.querySelector<HTMLInputElement>(".loading-message");
+
+    const showMessage = () => {
+      loadingMessage.style.opacity = "1";
+    };
+    const offScreen = () => {
+      loadingMessage.style.opacity = "0";
+      loadingScreen.style.opacity = "0";
+      loadingScreen.style.visibility = "hidden";
+    };
+
+    if (!sessionStorage.getItem("firstVisit")) {
+      // 初回訪問の場合、セッションストレージにフラグをセット
+      sessionStorage.setItem("firstVisit", "true");
+
+      // アニメーションの実行
+      setTimeout(showMessage, 100);
+      setTimeout(offScreen, 3500);
+    } else {
+      // 初回訪問ではない場合、ローディング画面を非表示にする
+      loadingScreen.style.display = "none";
+    }
+  });
+</script>

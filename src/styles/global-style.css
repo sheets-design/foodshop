@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+:root {
+    --brawn: #4E3E43;
+    --black: #101010;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Zen Old Mincho", serif;
+    line-height: 1.7;
+    color: #101010;
+    overflow-x: hidden;
+    font-weight: 500;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-feature-settings: "palt"
+}
+
+
+p {
+    font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem);
+}
+
+
+a {
+    cursor: pointer;
+
+}
+
+a:hover {
+    filter: brightness(50%);
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+.base-container {
+    width: 87%;
+
+    margin: 0 auto;
+}
+
+
+.br-pc {
+    display: none;
+}
+
+.js-fadeup {
+    opacity: 0;
+}
+
+@media(min-width:768px) {
+    .base-container {
+        width: min(88%, 1120px);
+        margin: 0 auto;
+    }
+
+    .br-pc {
+        display: block;
+    }
+}
+
+
+/* -------------------- ヘッダーの設定 -------------------- */
+
+
+@media(max-width:768px) {}
+
+@media(min-width:767px) {}

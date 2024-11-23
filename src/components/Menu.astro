@@ -1,0 +1,103 @@
+---
+import Button from "./Button.astro";
+import MenuList from "./MenuList.astro";
+import { Image } from "astro:assets";
+import headingMenu from "@images/heading/heading_menu.svg";
+import menu1 from "@images/menu/menu_img_1.jpg";
+import menu2 from "@images/menu/menu_img_2.jpg";
+import menu3 from "@images/menu/menu_img_3.jpg";
+import menu4 from "@images/menu/menu_img_4.jpg";
+import menu5 from "@images/menu/menu_img_5.jpg";
+import menu6 from "@images/menu/menu_img_6.jpg";
+---
+
+<section class="menu">
+    <div class="base-container">
+        <div class="message-container">
+            <h2 class="sec-heading"><Image src={headingMenu} alt="" /></h2>
+        </div>
+        <ul class="menu-list">
+            <MenuList
+                image={menu1}
+                title="あんみつ"
+                alt="あんみつの写真"
+                text="白玉、あん、求肥にバニラアイスと抹茶アイス、さらに季節のフルーツを乗せたあんみつです。特製の黒蜜が、全体のバランスを整え美味です。"
+                price="800円"
+            />
+            <MenuList
+                image={menu2}
+                title="たいやき"
+                alt="たいやきの写真"
+                text="高温で焼くことで皮をカリッとさせた天然物の鯛焼きです。北海道産小豆の良質な餡を使用し、甘さは控えめで口溶けなめらかな一品です。"
+                price="400円"
+            />
+            <MenuList
+                image={menu3}
+                title="おしるこ"
+                alt="おしるこの写真"
+                text="当店自慢の餡を丁寧にこすことで、滑らかな舌触りにこだわりました。しっかりとした甘みが柔らかい餅に絡んで食べ応え満点です。"
+                price="600円"
+            />
+            <MenuList
+                image={menu4}
+                title="かき氷"
+                alt="かき氷の写真"
+                text="長野の天然氷を細かく砕き、大納言小豆と抹茶シロップをかけたかき氷。口溶けなめらか。抹茶の苦味と小豆の甘さのバランスが最高です。"
+                price="600円"
+            />
+            <MenuList
+                image={menu5}
+                title="だんご"
+                alt="だんごの写真"
+                text="国産の天然もち米から丁寧に作られた串だんご。ほどよいコシのあるだんごに甘いみたらし餡がかかって何本でも食べられます。"
+                price="400円"
+            />
+            <MenuList
+                image={menu6}
+                title="わらびもち"
+                alt="わらびもちの写真"
+                text="根気強く練ることでしっかりとした弾力を出したわらび餅です。きな粉の代わりにたっぷりの抹茶をふることで、大人の味わいになっています。"
+                price="400円"
+            />
+        </ul>
+        <a href="/menu">
+            <Button>すべてのメニューを見る</Button>
+        </a>
+    </div>
+</section>
+
+<style>
+    .menu {
+        width: 100%;
+        padding-block: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
+    }
+
+    .sec-heading {
+        width: clamp(13.25rem, 11.152rem + 8.95vw, 18.313rem); /*212-293 */
+        margin: 0 auto 40px;
+    }
+
+    .menu-list {
+        display: grid;
+        row-gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    @media (min-width: 540px) {
+        .menu-list {
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 3.5%;
+        }
+        .menu-list {
+            display: grid;
+            row-gap: 40px;
+        }
+    }
+
+    @media (min-width: 1000px) {
+        .menu-list {
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 3%;
+        }
+    }
+</style>
