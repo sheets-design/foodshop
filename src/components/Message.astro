@@ -31,7 +31,8 @@ import deco2 from "@images/deco/deco_2.png";
 <style>
     .message {
         content: "";
-        background-image: url(../images/deco/paper_002.jpg);
+        background-image: url(../images/deco/paper_002.webp);
+        background-size: cover;
         padding-top: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
         padding-bottom: 160px;
         position: relative;
@@ -82,6 +83,9 @@ import deco2 from "@images/deco/deco_2.png";
         opacity: 0.7;
     }
 
+    .br-pc {
+        display: none;
+    }
     @media (min-width: 768px) {
         .message {
             padding-bottom: 100px;
