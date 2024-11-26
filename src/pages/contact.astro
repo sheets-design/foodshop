@@ -1,8 +1,176 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Message from "@components/Message.astro";
+import { Image } from "astro:assets";
+import headingContact from "@images/heading/heading_contact.svg";
 ---
 
 <Layout title="うめ屋">
-    <Message />
+    <section class="contact-form">
+        <div class="heading-area">
+            <h1 class="sub-page-heading">
+                <Image src={headingContact} alt="" />
+            </h1>
+            <p class="lead">
+                下記のフォームよりお気軽にお問い合わせください。<br
+                />※売り込みや営業などのご連絡はご遠慮ください。
+            </p>
+        </div>
+        <form class="form-container" action="">
+            <div class="form-group">
+                <label for="name" class="form-title">
+                    お名前<span class="required">必須</span>
+                </label>
+                <input
+                    type="text"
+                    name="名前"
+                    id="name"
+                    placeholder="例：山田花子"
+                />
+            </div>
+            <div class="form-group">
+                <label for="phone" class="form-title">
+                    電話番号<span class="required">必須</span>
+                </label>
+                <input
+                    type="number"
+                    name="電話番号"
+                    id="phone"
+                    placeholder="例：03-1234-5678"
+                />
+            </div>
+            <div class="form-group">
+                <label for="Email" class="form-title">
+                    メールアドレス
+                    <span class="required">必須</span>
+                </label>
+                <input
+                    type="email"
+                    name="メールアドレス"
+                    id="Email"
+                    placeholder="例：XXXX@sample.com"
+                />
+            </div>
+            <div class="form-group">
+                <label for="message" class="form-title">
+                    お問い合わせ内容
+                    <span class="required">必須</span>
+                </label>
+                <textarea
+                    name="お問い合わせ内容"
+                    id="message"
+                    rows="8"
+                    placeholder="お問い合わせ内容をご記入ください"></textarea>
+            </div>
+            <div class="policy-area">
+                <input type="checkbox" name="policy" id="policy" />
+
+                <label for="policy">
+                    <a href="privacy_policy.html"
+                        ><span class="policy-link">プライバシーポリシー</span
+                        ></a
+                    >に同意する
+                </label>
+            </div>
+            <input type="submit" value="送信する" class="btn" />
+        </form>
+    </section>
 </Layout>
+
+<style>
+    .contact-form {
+        padding-block: clamp(3.75rem, 2.714rem + 4.42vw, 6.25rem); /*60-100 */
+
+        background-image: url(../images/deco/paper_002.webp);
+    }
+    .heading-area {
+        margin: 0 auto 40px;
+
+        text-align: center;
+    }
+    .sub-page-heading {
+        width: clamp(12.5rem, 10.687rem + 7.73vw, 16.875rem); /* 200-270 */
+        margin-inline: auto;
+        margin-bottom: 20px;
+    }
+    .form-container {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .form-title {
+        font-family: sans-serif;
+        text-align: left;
+        font-weight: 700;
+        font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem);
+    }
+
+    .required {
+        background-color: red;
+        color: white;
+        font-size: 12px;
+        line-height: 1;
+        padding: 1px 2px 2px;
+        border-radius: 4px;
+        margin-left: 4px;
+    }
+
+    .name-area {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        background-color: white;
+        border: 1px solid #b2b2b2;
+        border-radius: 4px;
+        margin-top: 4px;
+        margin-bottom: 40px;
+        padding: 0.8em;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #c0c0c0;
+    }
+
+    .policy-link {
+        text-decoration: underline;
+    }
+
+    input[type="checkbox"] {
+        vertical-align: baseline;
+        width: 1em;
+        height: 1em;
+        margin-right: 4px;
+    }
+
+    .btn {
+        display: block;
+        margin-inline: auto;
+        line-height: 1;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-family: sans-serif;
+        padding: 1em 3em;
+        background-color: var(--brawn);
+        color: white;
+    }
+    .btn:hover {
+        filter: brightness(50%);
+    }
+    @media (min-width: 768px) {
+        .form-container {
+            width: 900px;
+            margin-inline: auto;
+        }
+    }
+</style>
