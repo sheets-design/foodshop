@@ -16,11 +16,10 @@ import photoDrink from "@images/slide/slide_img_1.jpg";
 >
     <main>
         <div class="all-menu">
-            <div class="top">
-                <h1 class="heading">
-                    <Image src={headingAllmenu} alt="" />
-                </h1>
-            </div>
+            <div class="sub-page-top"></div>
+            <h1 class="sub-page-heading">
+                <Image src={headingAllmenu} alt="" />
+            </h1>
             <div class="base-container">
                 <div class="menu-container">
                     <div class="thumb">
@@ -73,7 +72,7 @@ import photoDrink from "@images/slide/slide_img_1.jpg";
             </div>
         </div>
         <style>
-            .top {
+            .sub-page-top {
                 width: 100%;
                 height: 40vh;
                 display: grid;
@@ -81,17 +80,27 @@ import photoDrink from "@images/slide/slide_img_1.jpg";
                 background-image: url(../images/menu/menu_img8.jpg);
                 background-size: cover;
                 background-position: center;
-                margin-bottom: 40px;
+                margin-bottom: clamp(
+                    2.5rem,
+                    1.464rem + 4.42vw,
+                    5rem
+                ); /*40-80 */
             }
-            .heading {
-                background-color: white;
-                padding: 10px;
+            .sub-page-heading {
+                width: clamp(221px, 23vw, 295px);
+                margin-inline: auto;
+                margin-bottom: clamp(
+                    5rem,
+                    2.928rem + 8.84vw,
+                    10rem
+                ); /* 80-160 */
             }
+
             .menu-container {
                 text-align: center;
                 display: grid;
                 gap: 20px;
-                margin-bottom: 60px;
+                margin-bottom: 80px;
             }
 
             .title {

@@ -2,14 +2,9 @@
 const { class: className, ...rest } = Astro.props;
 ---
 
-<div class="wrap">
-    <p class={className} {...rest}><slot /></p>
-</div>
+<p class={className} {...rest}><slot /></p>
 
 <style>
-    .wrap {
-        text-align: center;
-    }
     p {
         display: inline-block;
         font-family: sans-serif;

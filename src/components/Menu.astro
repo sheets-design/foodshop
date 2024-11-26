@@ -60,9 +60,11 @@ import menu6 from "@images/menu/menu_img_6.jpg";
                 price="400円"
             />
         </ul>
-        <a href="/menu">
-            <Button>すべてのメニューを見る</Button>
-        </a>
+        <div class="btn">
+            <a href="/menu">
+                <Button>すべてのメニューを見る</Button>
+            </a>
+        </div>
     </div>
 </section>
 
@@ -81,6 +83,13 @@ import menu6 from "@images/menu/menu_img_6.jpg";
         display: grid;
         row-gap: 20px;
         margin-bottom: 40px;
+    }
+    .btn {
+        display: grid;
+        place-items: center;
+    }
+    .btn a {
+        display: inline-block;
     }
 
     @media (min-width: 540px) {

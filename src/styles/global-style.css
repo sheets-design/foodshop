@@ -50,7 +50,6 @@ svg {
 
 .base-container {
     width: 87%;
-
     margin: 0 auto;
 }
 
@@ -73,11 +72,3 @@ svg {
         display: block;
     }
 }
-
-
-/* -------------------- ヘッダーの設定 -------------------- */
-
-
-@media(max-width:768px) {}
-
-@media(min-width:767px) {}
