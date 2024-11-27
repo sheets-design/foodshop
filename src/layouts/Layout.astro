@@ -1,4 +1,6 @@
 ---
+import "@fontsource/zen-old-mincho";
+
 import "@styles/reset.css";
 import "@styles/global-style.css";
 import { ViewTransitions } from "astro:transitions";
@@ -19,14 +21,6 @@ const { title, description } = Astro.props;
 
         <meta name="description" content={description} />
         <meta name="format-detection" content="telephone=no" />
-
-        <!-- googlefontの使用 -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600&display=swap"
-            rel="stylesheet"
-        />
 
         <!-- favicon/webclipicon -->
         <link rel="icon" href="favicon.ico" />
