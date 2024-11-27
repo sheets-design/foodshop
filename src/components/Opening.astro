@@ -4,8 +4,8 @@ import { Image } from "astro:assets";
 import animationLogo from "@images/opening-logo.svg";
 ---
 
-<div class="loading" transition:persist>
-  <figure class="loading-message" transition:persist>
+<div class="loading">
+  <figure class="loading-message">
     <Image src={animationLogo} alt="" loading="eager" decoding="sync" />
   </figure>
 </div>
