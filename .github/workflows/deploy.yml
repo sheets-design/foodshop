@@ -6,7 +6,7 @@ on:
       - main  # mainブランチにpushされたときに実行
   workflow_dispatch:
   repository_dispatch:
-    types: [microcms]  # Webhookが通知されたときに実行
+    types: [newt]  # Webhookが通知されたときに実行
 
 jobs:
   deploy:
@@ -27,8 +27,8 @@ jobs:
 
     - name: Build the project
       env:
-        MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
-        MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+        NEWT_SPACE_UID: ${{ secrets.MNEWT_SPACE_UID }}
+        NEWT_CDN_API_TOKEN: ${{ secrets.NEWT_CDN_API_TOKEN }}
         PUBLIC_SITE_URL: ${{ secrets.PUBLIC_SITE_URL }}
       run: npm run build
 
