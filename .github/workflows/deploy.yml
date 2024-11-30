@@ -27,7 +27,7 @@ jobs:
 
     - name: Build the project
       env:
-        NEWT_SPACE_UID: ${{ secrets.MNEWT_SPACE_UID }}
+        NEWT_SPACE_UID: ${{ secrets.NEWT_SPACE_UID }}
         NEWT_CDN_API_TOKEN: ${{ secrets.NEWT_CDN_API_TOKEN }}
         PUBLIC_SITE_URL: ${{ secrets.PUBLIC_SITE_URL }}
       run: npm run build
