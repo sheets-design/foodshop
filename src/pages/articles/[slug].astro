@@ -1,19 +1,22 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { newtClient } from "../../library/newt";
+import type { Article } from "../../library/newt";
 
-import { getBlogs, getBlogDetail } from "../library/microcms";
-
-export async function getStaticPaths() {
-    const response = await getBlogs({ fields: ["id"] });
-    return response.contents.map((content: any) => ({
-        params: {
-            blogId: content.id,
+export const getStaticPaths = async () => {
+    const { items: articles } = await newtClient.getContents<Article>({
+        appUid: "sample",
+        modelUid: "article",
+        query: {
+            select: ["title", "slug", "body", "date"],
         },
+    });
+    return articles.map((article) => ({
+        params: { slug: article.slug },
+        props: { article },
     }));
-}
-
-const { blogId } = Astro.params;
-const blog = await getBlogDetail(blogId as string);
+};
+const { article } = Astro.props;
 
 import { Image } from "astro:assets";
 import headingNews from "@images/heading/heading_news.svg";
@@ -27,9 +30,9 @@ import headingNews from "@images/heading/heading_news.svg";
         </h1>
         <div class="news-container">
             <div class="post">
-                <div class="date">{blog.publishedAt.slice(0, 10)}</div>
-                <div class="title">{blog.title}</div>
-                <div class="content" set:html={blog.content} />
+                <div class="date">{article.date.slice(0, 10)}</div>
+                <div class="title">{article.title}</div>
+                <div class="content" set:html={article.body} />
                 <div class="page-nav"><a href="/">← トップページに戻る</a></div>
             </div>
         </div>

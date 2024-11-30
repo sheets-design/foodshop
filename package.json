@@ -13,6 +13,7 @@
     "@fontsource/zen-old-mincho": "^5.1.0",
     "astro": "^4.16.13",
     "microcms-js-sdk": "^3.1.2",
+    "newt-client-js": "^3.3.7",
     "swiper": "^11.1.15"
   }
 }

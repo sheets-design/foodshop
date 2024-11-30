@@ -2,8 +2,15 @@
 import { Image } from "astro:assets";
 import headingNews from "@images/heading/heading_news.svg";
 
-import { getBlogs } from "../library/microcms";
-const response = await getBlogs({ fields: ["id", "title", "publishedAt"] });
+import { newtClient } from "../library/newt";
+import type { Article } from "../library/newt";
+const { items: articles } = await newtClient.getContents<Article>({
+    appUid: "sample",
+    modelUid: "article",
+    query: {
+        select: ["title", "slug", "body", "date"],
+    },
+});
 ---
 
 <section class="news">
@@ -12,13 +19,13 @@ const response = await getBlogs({ fields: ["id", "title", "publishedAt"] });
             <h2 class="sec-heading"><Image src={headingNews} alt="" /></h2>
             <ul>
                 {
-                    response.contents.map((content: any) => (
+                    articles.map((article) => (
                         <li>
-                            <a href={content.id}>
+                            <a href={`/articles/${article.slug}`}>
                                 <div class="date">
-                                    {content.publishedAt.slice(0, 10)}
+                                    {article.date.slice(0, 10)}
                                 </div>
-                                <p class="text">{content.title}</p>
+                                <p class="text">{article.title}</p>
                             </a>
                         </li>
                     ))
